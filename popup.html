@@ -10,37 +10,17 @@
 </head>
 <body>
   <header>
-    <div class="brand">
-      <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <div><h1>Feed Sieve</h1><p>YouTube filters · On-device</p></div>
-    </div>
-    <label class="switch" title="Enable filtering">
-      <input id="enabled" type="checkbox" role="switch" aria-label="Enable filtering">
-      <span></span>
-    </label>
+    <h1>Feed Sieve</h1>
+    <button type="button" id="toggle" disabled>Pause</button>
   </header>
-  <main>
-    <fieldset><legend>Hide topics</legend><div class="chips" id="topics"></div></fieldset>
-    <fieldset><legend>Filter on</legend><div class="chips" id="surfaces"></div></fieldset>
-    <label class="row" for="sensitivity">
-      <strong>Topic matching</strong>
-      <select id="sensitivity">
-        <option value="strict">Precise</option>
-        <option value="balanced">Balanced</option>
-        <option value="broad">Broad</option>
-      </select>
-    </label>
-    <form id="phrases">
-      <label for="block">Block phrases or channels</label>
-      <textarea id="block" rows="2" placeholder="e.g. reaction videos, Channel Name"></textarea>
-      <label for="allow">Always allow</label>
-      <textarea id="allow" rows="2" placeholder="e.g. a favorite channel"></textarea>
-      <p class="hint">Separate entries with commas or new lines. Allow wins.</p>
-      <footer>
-        <p id="status" role="status"></p>
-        <button id="save" type="submit">Save phrases</button>
-      </footer>
-    </form>
-  </main>
+  <form id="filters">
+    <label for="block">What do you want to hide?</label>
+    <textarea id="block" rows="4" placeholder="e.g. migration, politics, reaction videos" aria-describedby="hint" disabled></textarea>
+    <p id="hint">Enter topics, phrases, or channel names separated by commas or new lines.</p>
+    <footer>
+      <p id="status" role="status"></p>
+      <button type="submit" id="save" disabled>Save</button>
+    </footer>
+  </form>
 </body>
 </html>

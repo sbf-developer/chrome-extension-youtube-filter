@@ -1,45 +1,26 @@
 * { box-sizing: border-box; }
 :root {
   color-scheme: light dark;
-  --bg: light-dark(#f7f8f3, #1c211e);
+  --bg: light-dark(#f8faf8, #1c211e);
   --panel: light-dark(#fff, #252b27);
   --ink: light-dark(#202c25, #f1f6ef);
   --muted: light-dark(#52645a, #adbbb1);
   --line: light-dark(#dce4dc, #3d4840);
   --accent: light-dark(#235944, #ade2be);
   --on-accent: light-dark(#fff, #142b1d);
-  --tint: light-dark(#e4f2e8, #303e34);
 }
-body { width: 360px; margin: 0; background: var(--bg); color: var(--ink); font: 13px/1.4 system-ui, sans-serif; }
-header, .brand, .row, footer { display: flex; align-items: center; }
-header, .row, footer { justify-content: space-between; }
-header { padding: 17px 18px; background: var(--panel); border-bottom: 1px solid var(--line); }
-.brand { gap: 11px; }
-.mark { width: 35px; height: 35px; border-radius: 11px; background: var(--accent); display: grid; place-content: center; justify-items: center; gap: 3px; }
-.mark i { width: 17px; height: 2px; border-radius: 3px; background: var(--on-accent); }
-.mark i:nth-child(2) { width: 12px; }
-.mark i:nth-child(3) { width: 6px; }
+body { width: 330px; margin: 0; padding: 16px; background: var(--bg); color: var(--ink); font: 13px/1.45 system-ui, sans-serif; }
+header, footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+header { margin-bottom: 16px; }
 h1, p { margin: 0; }
-h1 { font-size: 18px; letter-spacing: -.45px; }
-header p, .hint, #status { color: var(--muted); font-size: 11px; }
-main { display: grid; gap: 14px; padding: 15px 18px; }
-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
-legend, form label { padding: 0; font-weight: 650; margin-bottom: 6px; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip, .switch { position: relative; cursor: pointer; }
-.chip input, .switch input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.chip span { display: block; padding: 5px 9px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); }
-.chip input:checked + span { background: var(--tint); border-color: var(--accent); color: var(--accent); }
-.chip input:focus-visible + span, .switch input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
-.switch span { display: block; width: 38px; height: 22px; border-radius: 20px; background: var(--muted); }
-.switch span::after { content: ""; position: absolute; inset: 3px auto auto 3px; width: 16px; height: 16px; border-radius: 50%; background: white; }
-.switch input:checked + span { background: var(--accent); }
-.switch input:checked + span::after { transform: translateX(16px); background: var(--on-accent); }
-.row { padding: 8px 0; border-block: 1px solid var(--line); }
-button, select, textarea { font: inherit; }
-select, textarea { color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; }
-textarea { width: 100%; min-height: 45px; max-height: 85px; resize: vertical; display: block; margin-bottom: 8px; }
-form label { display: block; }
-footer { margin-top: 9px; gap: 8px; }
-button { margin-left: auto; border: 0; border-radius: 8px; padding: 7px 11px; font-weight: 650; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+h1 { font-size: 17px; letter-spacing: -.35px; }
+label { display: block; font-weight: 650; margin-bottom: 7px; }
+textarea, button { font: inherit; }
+textarea { display: block; width: 100%; resize: vertical; min-height: 72px; max-height: 200px; padding: 9px 10px; border-radius: 9px; border: 1px solid var(--line); color: var(--ink); background: var(--panel); }
+#hint, #status { color: var(--muted); font-size: 11px; }
+#hint { margin-top: 6px; }
+footer { margin-top: 12px; }
+button { border-radius: 8px; padding: 6px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button:disabled { opacity: .55; cursor: default; }
+#save { margin-left: auto; font-weight: 650; border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

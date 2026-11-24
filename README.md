@@ -3,10 +3,12 @@
 1. Open `chrome://extensions` in Chrome.
 2. Turn on **Developer mode** and click **Load unpacked**.
 3. Select the folder containing `manifest.json`.
-4. Reload any open YouTube tabs. Use the Extensions menu to open or pin Feed Sieve.
+4. Reload any open YouTube tabs and open Feed Sieve from the Extensions menu.
 
-Migration and Politics start enabled on Home and the watch sidebar. Search filtering, Sports and Celebrity gossip are opt-in. The main switch pauses filtering and restores hidden cards.
+Type the topics, phrases, or channel names you want to hide. Separate entries with commas or new lines, then click **Save**. Clear the field and save to remove all filters, or use **Pause** to temporarily show everything.
 
-Use **Block phrases or channels** for your own rules and **Always allow** for exceptions. Entries match whole words or contiguous phrases in available titles or channel names. Click **Save phrases** to apply those changes. Topic, surface and sensitivity controls save immediately.
+Migration and Politics are prefilled for new installs. Entering a supported topic such as `migration`, `politics`, `sports` or `celebrity gossip` also matches related English and Danish text. Other entries match whole words or phrases in available titles or channel names. Matching applies to Home and the watch sidebar. Existing installations retain their previously selected surfaces, sensitivity and exceptions.
 
-The bundled classifier scores English and Danish topic clues from recommendation text. Precise requires stronger evidence, Balanced accepts more combinations, and Broad can match a single weak clue. It can miss vague titles and occasionally hide unrelated videos. It does not inspect video audio or thumbnail text. The extension makes no network requests and stores settings in Chrome's local extension storage.
+This extension uses a bundled text classifier. Vague titles can slip through, and unrelated videos can sometimes match. It makes no network requests and stores settings in Chrome's local extension storage.
+
+When updating an unpacked install, click its reload button in `chrome://extensions` and refresh YouTube.

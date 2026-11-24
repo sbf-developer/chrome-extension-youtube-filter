@@ -41,11 +41,33 @@
     .filter(term => term.trim());
   const has = (text, terms) => terms.some(term => text.includes(term));
 
+  const topicAliases = {
+    migration: 'migration|immigration|indvandring|udlændingepolitik',
+    politics: 'politics|politik',
+    celebrity: 'celebrity gossip|kendissladder',
+    sports: 'sports|sport'
+  };
+
+  function blockList(settings) {
+    if (typeof settings.blockList === 'string') return settings.blockList;
+    const selectedTopics = Object.entries(topics)
+      .filter(([key]) => settings.topics[key])
+      .map(([, topic]) => topic.label.toLowerCase());
+    return [...selectedTopics, settings.block].filter(Boolean).join('\n');
+  }
+
+  const hasAnyEntry = (entries, aliases) => aliases.some(alias => entries.includes(alias));
+
   function compile(settings) {
-    const block = parse(settings.block, /[\n,]+/);
+    const usesBlockList = typeof settings.blockList === 'string';
+    const entries = parse(usesBlockList ? settings.blockList : settings.block, /[\n,]+/);
+    const aliases = Object.values(topicAliases).flatMap(value => parse(value, '|'));
+    const block = usesBlockList ? entries.filter(term => !aliases.includes(term)) : entries;
     const allow = parse(settings.allow, /[\n,]+/);
     const enabledTopics = Object.entries(topics)
-      .filter(([key]) => settings.topics[key])
+      .filter(([key]) => usesBlockList
+        ? hasAnyEntry(entries, parse(topicAliases[key], '|'))
+        : settings.topics[key])
       .map(([, topic]) => ({
         strong: parse(topic.strong, '|'),
         clues: parse(topic.clues, '|'),
@@ -68,5 +90,5 @@
     };
   }
 
-  globalThis.FeedSieve = { defaults, topics, compile };
+  globalThis.FeedSieve = { defaults, blockList, compile };
 })();
