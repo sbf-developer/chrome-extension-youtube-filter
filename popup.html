@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feed Sieve</title>
+  <link rel="stylesheet" href="popup.css">
+  <script defer src="rules.js"></script>
+  <script defer src="popup.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div><h1>Feed Sieve</h1><p>YouTube filters · On-device</p></div>
+    </div>
+    <label class="switch" title="Enable filtering">
+      <input id="enabled" type="checkbox" role="switch" aria-label="Enable filtering">
+      <span></span>
+    </label>
+  </header>
+  <main>
+    <fieldset><legend>Hide topics</legend><div class="chips" id="topics"></div></fieldset>
+    <fieldset><legend>Filter on</legend><div class="chips" id="surfaces"></div></fieldset>
+    <label class="row" for="sensitivity">
+      <strong>Topic matching</strong>
+      <select id="sensitivity">
+        <option value="strict">Precise</option>
+        <option value="balanced">Balanced</option>
+        <option value="broad">Broad</option>
+      </select>
+    </label>
+    <form id="phrases">
+      <label for="block">Block phrases or channels</label>
+      <textarea id="block" rows="2" placeholder="e.g. reaction videos, Channel Name"></textarea>
+      <label for="allow">Always allow</label>
+      <textarea id="allow" rows="2" placeholder="e.g. a favorite channel"></textarea>
+      <p class="hint">Separate entries with commas or new lines. Allow wins.</p>
+      <footer>
+        <p id="status" role="status"></p>
+        <button id="save" type="submit">Save phrases</button>
+      </footer>
+    </form>
+  </main>
+</body>
+</html>
